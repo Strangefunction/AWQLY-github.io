@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/first.css">
+    <link rel="stylesheet" type="text/css" href="./css/new_file.css"/>
+
+    <script src="./js/jquery.min.js" defer="defer" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/new_file.js" defer="defer" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // 定义变量 
+        let chosenSlideNumber = 1; // 当前选择的幻灯片编号 
+        let offset = 0; // 幻灯片偏移量 
+        let barOffset = 0; // 导航条偏移量 
+        let intervalID; // 定时器 ID 
+        // 启动幻灯片轮播 
+        startSlide();
+        // 获取所有抽屉按钮，并为每个按钮添加点击事件监听器 
+        const drawerBtns = Array.from(document.querySelectorAll(".drawer-btn"));
+        drawerBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            clearInterval(intervalID); // 清除定时器 
+            startSlide(); // 重新启动幻灯片轮播 
+          })
+        })
+        // 获取幻灯片区域 
+        const slideSection = document.querySelector("#slide-section");
+        // 鼠标移入幻灯片区域时清除定时器 
+        slideSection.addEventListener("mouseenter", () => {
+          clearInterval(intervalID);
+        })
+        // 鼠标移出幻灯片区域时重新启动幻灯片轮播 
+        slideSection.addEventListener("mouseleave", () => {
+          startSlide();
+        })
+        // 切换到指定编号的幻灯片 
+        function slideTo(slideNumber) {
+          drawerboxToggle(slideNumber); // 切换抽屉面板状态 
+          drawerbtnToggle(slideNumber); // 切换抽屉按钮状态 
+          // 更新偏移量 
+          let previousSlideNumber = chosenSlideNumber;
+          chosenSlideNumber = slideNumber;
+          offset += (chosenSlideNumber - previousSlideNumber) * (-100); // 计算幻灯片偏移量 
+          barOffset += (chosenSlideNumber - previousSlideNumber) * (100); // 计算导航条偏移量 
+          barSlide(barOffset); // 移动导航条 
+          // 获取所有幻灯片，为每个幻灯片设置偏移量 
+          const slides = document.querySelectorAll(".card");
+          Array.from(slides).forEach(slide => {
+            slide.style.transform = `translateY(${offset}%)`;
+          })
+        }
+        // 切换抽屉面板状态 
+        function drawerboxToggle(drawerboxNumber) {
+          let prevDrawerboxNumber = chosenSlideNumber;
+          const drawerboxes = document.querySelectorAll(".drawerbox");
+          drawerboxes[prevDrawerboxNumber - 1].classList.toggle("active"); // 切换前一个抽屉面板的状态 
+          drawerboxes[drawerboxNumber - 1].classList.toggle("active"); // 切换当前抽屉面板的状态 
+        }
+        // 切换抽屉按钮状态 
+        function drawerbtnToggle(drawerBtnNumber) {
+          let prevDrawerBtnNumber = chosenSlideNumber;
+          const drawerBtns = document.querySelectorAll(".drawer-btn");
+          drawerBtns[prevDrawerBtnNumber - 1].classList.toggle("active"); // 切换前一个抽屉按钮的状态 
+          drawerBtns[drawerBtnNumber - 1].classList.toggle("active"); // 切换当前抽屉按钮的状态 
+        }
+        // 移动导航条 
+        function barSlide(barOffset) {
+          const bar = document.querySelector("#bar");
+          bar.style.transform = `translateY(${barOffset}%)`;
+        }
+        // 启动幻灯片轮播 
+        function startSlide() {
+          intervalID = setInterval(() => {
+            slideTo(chosenSlideNumber % 4 + 1); // 每次切换到下一个幻灯片 
+          }, 3000); // 每隔 3 秒自动切换幻灯片 
+        }
+    
+    
+    
+      </script>
+</head>
+<body>
+ 
+<!--从这里开始写-->
+    <div class="all">
+        <!--先写导航栏的三个部分-->
+        
+        <div class="clearfix">
+            <ul id="nav">
+                <li class="slide1"></li>
+                <li class="slide2"></li>
+                <li><a href="../html/laran.html" >蜡染简介</a></li>
+                <li><a href="../html/shijianzhou.html">发展历程</a></li>
+                <li><a href="../html/laranplay.html">蜡染图片</a></li>
+                <li><a href="../html/gongyiliucheng.html">工艺流程</a></li>
+                <li><a href="../html/chuanshuogushi.html">传说故事</a></li>
+            </ul> 
+
+    <script>
+        $("#nav a").on("click", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        });
+        $("#nav a").on("mouseover", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width }).addClass("squeeze");
+        });
+        $("#nav a").on("mouseout", function () {
+            $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+        });
+        var currentWidth = $("#nav li:nth-of-type(3) a").parent("li").width();
+        var current = $("li:nth-of-type(3) a").position();
+        $("#nav .slide1").css({ left: +current.left, width: currentWidth });
+    </script>
+        </div>
+        <!--导航栏三部分到这里结束-->
+        <!--第二部分 轮播图-->
+        <div class="bp">
+            <div class="clearfix">
+                <div>
+                    <div class="out">
+                        <ul>
+                            <li class="images">
+                                <img src="../images/35df54fc77a8479588b84d235f4e7141.jpg" >
+                            </li>
+                            <li class="images">
+                                <img src="../images/459e0a30f1f24d0d969132e7ce3297e8.jpg" >
+                            </li>
+                            <li class="images">
+                                <img src="../images/564a69ccd35840a8967a880c4579cab7.jpg" >
+                            </li>
+                            <li class="images">
+                                <img src="../images/5fb75579e5284044858f525b177db7eb.jpg" >
+                            </li>
+                            <li class="images">
+                                 <img src="../images/ab1e9133e7e54a39bd9222c2ff8e3534.jpg" >
+                            </li>
+                        </ul>
+                        <p class="anNiu" id="anNiu1" onclick="dianJi(0)">&lt;</p>
+                        <p class="anNiu" id="anNiu2" onclick="dianJi(1)">&gt;</p>
+                        <ol>
+                            <li class="anNius" onclick="anNius(0)"></li>
+                            <li class="anNius" onclick="anNius(1)"></li>
+                            <li class="anNius" onclick="anNius(2)"></li>
+                            <li class="anNius" onclick="anNius(3)"></li>
+                            <li class="anNius" onclick="anNius(4)"></li>
+                        </ol>
+                </div> 
+                </div>
+            </div>
+        </div>
+        <!--轮播图结束-->
+        <!--第三部分 中四左右两图-->
+        <div class="bp_one">
+            <div class="clearfix">
+                <div>
+                    <div class="moll">
+                        <label for="button1" class="button" style="--i:0">Grace</label>
+                        <input type="radio" id="button1" name="page" checked>
+                        <div class="page">
+                            <div class="page_content">
+                                <h1>处理</h1>
+                                <p>Fashion women wear clothes, not clothes.</p>
+                                <span>
+                                    Designers are reimagining soignée staples for spring and summer─skirt suits, twin sets,
+                                    below-the-knee dresses, kitten heels and frame bags─that appear anything but moth-eaten. in fact,
+                                    fashion's neoconservative coup d'état feels deliciously defiant, given the excessively revealing
+                                    styles pop culture celebrates. a quick flip through any supermarket tabloid yields an onslaught of
+                                    oversexed stars and their indelicate fashion choices.
+                                </span>
+                            </div>
+                        </div>
+                
+                
+                        <label for="button2" class="button" style="--i:1">Trend</label>
+                        <input type="radio" id="button2" name="page">
+                        <div class="page">
+                            <div class="page_content">
+                                <h1>点蜡</h1>
+                                <p>Fashion is like a colorful screen. In a flash, it becomes its color.</p>
+                                <span>Is conservative the new radical? the fashion world certainly seems to think so. this season,
+                                    designers filled their runways with restrained silhouettes that echo the graceful,
+                                    showing-less-is-more aesthetic of generations past.
+                                </span>
+                            </div>
+                        </div>
+                
+                
+                        <label for="button3" class="button" style="--i:2">Design</label>
+                        <input type="radio" id="button3" name="page">
+                        <div class="page">
+                            <div class="page_content">
+                                <h1>染色</h1>
+                                <p>I need to be different and irreplaceable.</p>
+                                <span>
+                                    Designers appreciate it when attendees wear their brand to their show. most design houses will even
+                                    ensure that the celebrities are “appropriately” dressed in designer wear once they agree to attend.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--结束-->
+        <!--第四部分 背景图加文字-->
+        <div class="bp_two">
+            <div class="clearfix">
+                <div>
+                    <div class="shell">
+                        <div class="person">
+                            <div class="box">
+                                <img class="circle" src="./images/background.png" />
+                                <img class="img" src="./images/02.gif" />
+                            </div>
+                            <div class="wire"></div>
+                            <div class="name">蝴蝶纹</div>
+                            <div class="birthday">January 3, 1995</div>
+                        </div>
+                
+                        <div class="person">
+                            <div class="box">
+                                <img class="circle" src="./images/background.png" />
+                                <img class="img" src="./images/03.gif" />
+                            </div>
+                            <div class="wire"></div>
+                            <div class="name">鸟纹</div>
+                            <div class="birthday">March 27, 1997</div>
+                        </div>
+                
+                        <div class="person">
+                            <div class="box">
+                                <img class="circle" src="./images/background.png" />
+                                <img class="img" src="./images/09.gif" />
+                            </div>
+                            <div class="wire"></div>
+                            <div class="name">龙纹</div>
+                            <div class="birthday">January 16, 1996</div>
+                        </div>
+                
+                        <div class="person">
+                            <div class="box">
+                                <img class="circle" src="./images/background.png" />
+                                <img class="img" src="./images/2.png" />
+                            </div>
+                            <div class="wire"></div>
+                            <div class="name">梨花纹</div>
+                            <div class="birthday">February 11, 1997</div>
+                        </div>
+                
+                
+                    </div>
+                
+                </div>
+             </div>
+         </div>
+        <!--结束-->
+        <!--第五部分 各分类-->
+        <div class="bp_three">
+            <div class="clearfix">
+                <div id="main">
+                    <div id="click-section">
+                      <div id="drawerboxes">
+                        <div class="drawerbox active">
+                          <button class="drawer-btn active" onclick="slideTo(1)">The Wind Rises<span
+                              class="drawer-head">1</span></button>
+                        </div>
+                        <div class="drawerbox">
+                          <button class="drawer-btn" onclick="slideTo(2)">Children of the Wind<span
+                              class="drawer-head">2</span></button>
+                        </div>
+                        <div class="drawerbox">
+                          <button class="drawer-btn" onclick="slideTo(3)">Title Here<span class="drawer-head">3</span></button>
+                        </div>
+                        <div class="drawerbox">
+                          <button class="drawer-btn" onclick="slideTo(4)">Title Here<span class="drawer-head">4</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="slide-section">
+                      <div id="slide-bar">
+                        <div id="bar"></div>
+                      </div>
+                      <div id="card-section">
+                        <div id="card1" class="card">
+                          <div class="card-small-title">Miyazaki Hayao</div>
+                          <div class="card-title">背景</div>
+                          <div class="card-content">Quote: "Even in the dark night, the stars will not
+                            disappear." Reflection: In the journey of life, we may encounter storms
+                            and difficulties, but as long as we have faith and hope in our hearts,
+                            we can find light even in the darkness.</div>
+                          <div class="card-img">
+                            <img src="./img/17.gif" alt="">
+                          </div>
+                        </div>
+                        <div id="card2" class="card">
+                          <div class="card-small-title">发展</div>
+                          <div class="card-title">发展</div>
+                          <div class="card-content">Quote: "The wind is calling, to fly freely."
+                            Reflection: The wind symbolizes freedom and inspiration. We should bravely follow the voice of our hearts,
+                            break through all limitations, and pursue our dreams. </div>
+                          <div class="card-img">
+                            <img src="./img/08.gif" alt="">
+                          </div>
+                        </div>
+                        <div id="card3" class="card">
+                          <div class="card-small-title">价值意义</div>
+                          <div class="card-title">价值意义</div>
+                          <div class="card-content">Quote: "At the end of the sky, there is another world."
+                            Reflection: Sometimes we may feel lost and confused, but as long as we maintain faith and hope, we will
+                            surely find our own piece of sky and achieve our dreams. </div>
+                          <div class="card-img">
+                            <img src="./img/03.gif" alt="">
+                          </div>
+                        </div>
+                        <div id="card4" class="card">
+                          <div class="card-small-title">传承与发展</div>
+                          <div class="card-title">传承与发展</div>
+                          <div class="card-content">Quote: "Don't stop, don't be afraid, just keep going, and you will find the answer."
+                            Reflection: In the journey of life, we will encounter various difficulties and challenges, but as long as we
+                            persevere, fear no hardship, and believe in our own strength, we will find the answers and achieve our
+                            dreams.</div>
+                          <div class="card-img">
+                            <img src="./img/04.gif" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+             </div>
+         </div>
+        <!--结束-->
+        <!--第六部分 新闻类-->
+        <div class="bp_four">
+            <div class="clearfix">
+               
+                
+            </div>
+        </div>
+    </div>
+
+             </div>
+         </div>
+        <!--结束-->
+        <!--第七部分 背景图加文字-->
+        <div class="bp_five">
+            <div class="clearfix">
+                <div>
+        
+                </div>
+            </div>
+        </div>
+        <!--结束-->
+        <!--第八部分 背景图加文字-->
+        <div class="bp_six">
+            <div class="clearfix">
+                <div>
+        
+                </div>
+             </div>
+         </div>
+        <!--结束-->       
+    </div>
+
+</body>
+</html>

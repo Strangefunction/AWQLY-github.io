@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜡染首页</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 2000px;
+            overflow-x: hidden;
+
+        }
+
+        .shell {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        header {
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+            transition: clip-path 0.5s ease;
+            position: relative;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: url(../images/laran1.jpg);
+            background-size: cover;
+            transform: scale(1);
+            transition: transform 0.5s ease;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 100px;
+        }
+
+        .main h2 {
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        .main span {
+            padding: 0 100px;
+            font-size: 30px;
+        }
+
+
+
+        @import url('https://fonts.googleapis.com/css?family=Lato:700,900');
+
+        @font-face {
+            font-family: Arno Pro;
+            src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ArnoPro-Regular.otf);
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: Arno Pro;
+            src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ArnoPro-Italic.otf);
+            font-style: italic;
+        }
+
+        p {
+            font-family: Arno Pro, serif;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        p.credits {
+            font-style: italic;
+            text-indent: 0 !important;
+            margin: 1rem 0;
+        }
+
+        p a {
+            font-weight: bolder;
+            color: #000;
+            text-decoration: none;
+        }
+
+        @supports (font-variant-caps: small-caps) {
+            .multicol:first-of-type p:first-of-type {
+                font-variant-caps: small-caps;
+            }
+        }
+
+        p:not(:first-of-type) {
+            text-indent: 1.4rem;
+        }
+
+        .multicol {
+            column-count: 4;
+            column-gap: 2rem;
+        }
+
+        .multicol+img {
+            margin: 2rem 0;
+        }
+
+        article {
+            width: 80%;
+            margin: 0 auto 4rem;
+        }
+
+        article img {
+            width: 100%;
+        }
+
+        article header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        article h1 {
+            margin-top: 0;
+            font-size: 3rem;
+        }
+
+        article h2 {
+            break-after: column;
+            font-size: 1.5rem;
+        }
+
+        h1,
+        h2 {
+            font-family: Lato, sans-serif;
+        }
+
+        @media all and (max-width: 1600px) {
+            .multicol {
+                column-count: 3;
+            }
+        }
+
+        @media all and (max-width: 1000px) {
+            .multicol {
+                column-count: 2;
+            }
+        }
+
+        @media all and (max-width:800px) {
+            article h2 {
+                break-after: avoid;
+            }
+
+            .multicol {
+                column-count: 1;
+            }
+        }
+
+        @media all and (max-width:600px) {
+            body {
+                margin: 0;
+            }
+
+            article {
+                width: 100%;
+            }
+
+            .multicol {
+                padding: 0 1rem;
+            }
+
+            article header {
+                margin-bottom: 2.5rem;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            h1 {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell">
+        <header>
+            <div class="img"></div>
+        </header>
+        <div class="main">
+            <main>
+                <article>
+                    <div class="multicol">
+                        <h1>this is the</h1>
+                        <h2> の front nest of the goat</h2>
+                        <p>
+                            寂静的森林里，树木窃窃私语，萤火虫的光不再温暖
+                            。鹅卵石铺就的小路上布满了多少人的脚印？我在这里轻轻吟颂着温暖的童话。　　带着怀表的兔子发着光，领着美丽的爱丽丝，进入神秘的扑克牌仙境，奇妙的经历只是一个梦而已，一切都会结束。　　冰冷的城墙述说着一个又一个故事，湛蓝的大海是人鱼的眼泪，透明的水晶棺是公主的幸福笑靥，梦幻的蔷薇花翩飞，我的童话又在哪里？
+                        </p>
+                    </div>
+                    <img src="../images/laran2.jpg" alt="">
+                    <div class="multicol">
+                        <p>初一作文当前位置：天天作文网>分类作文>初一作文>优美小短文我要投稿投诉建议
+                            优美小短文
+                            时间：2022-02-10 12:06:04 初一作文 我要投稿
+                            优美小短文（精选73篇）　　在生活、工作和学习中，大家都经常看到作文的身影吧，作文是经过人的思想考虑和语言组织，通过文字来表达一个主题意义的记叙方法。相信很多朋友都对写作文感到非常苦恼吧，下面是小编为大家整理的优美小短文，仅供参考，希望能够帮助到大家。优美小短文（精选73篇）
+                            　
+                            
+                          
+                            　　相识是偶然，也是缘分。　　缘分是个抽象的概念，它摸不着，看不见，猜不透。人与人之间的相知相识，无不是因为他们之间的那一分缘。更或许，同舟共渡的船客能共舟也是一分缘。　　刻意追求来的东西是无缘分可言的。追寻的东西，往往没结果。如旅游：在来回途中的乐趣，往往比在目的地收获的要多。　　与自己失之交臂的东西，急需时倾尽全力的去找也找不到，最后却发现原来它一直在自己的身边，只是找到时，自己却不再需要它，那时有缘无分。无缘分的我们不必强求，有缘无分的我们也不该挽留，这些东西是无法永远掌握在自己手中的，那么便让它们随风而逝吧。一切顺其自然，免得苦苦追寻找的那一分缘，到手后，却发现跟自己心目中的相差甚远，想放弃，又舍不得，弄得前进的脚步竟全是缘份的负荷。　　人都说：缘分天定。很多的偶然，每次的巧合，不经意的邂逅，让人感觉到冥冥中确实有一股力量存在。“嘿，有见面了。”“这世界真小。”“我们真有缘”“莫非这是缘份？”当上帝看到这一切时，他偷偷的笑了。威力无穷的魔棒指挥着这一切，给人们的脸上带来无穷的惊喜，还有心底的那份感激。　　不要说自己不懂缘分。缘分抓不住的，抓，已经有了一分刻意，只能用心去领会，感悟。缘分来去匆匆，你感到它来时，那是一阵惊喜；如果它走时你才感到，那是一种惆怅和悲伤。有些逝去了便不会再来，你只能遗憾一辈子。记住：缘分是一种自然，不是刻意。　　缘分无需等待。她要来的时候自然会来，因此不必对缘分翘首以待，望穿秋水。只要用心去感觉，那已经是很不错的了。缘分无规律，苦苦的等待着一分缘，很可能会是等不到。苦苦等待，那是刻意，那时即使缘分擦身而过，你也感觉不到。与其如此，不如放弃等待，去多用心去体会，或者，缘份已来到了你的身边呢。　　相信缘份的人多是敏感的，感情细腻而且很有爱心。他们知道，每一分缘都是难得的，求不来的，所以会尽力善待缘分带来的一切，包括
+                            好的和不够理想的。你信缘吗？你会惜缘吗？　　信缘、惜缘吧，你会因此拥有许多知心朋友和快乐的人生的。</p>
+                    </div><img src="../images/laran3.jpg" alt="">
+                    <div class="multicol">
+                        <p>Inside the
+                          
+                            　　相识是偶然，也是缘分。　　缘分是个抽象的概念，它摸不着，看不见，猜不透。人与人之间的相知相识，无不是因为他们之间的那一分缘。更或许，同舟共渡的船客能共舟也是一分缘。　　刻意追求来的东西是无缘分可言的。追寻的东西，往往没结果。如旅游：在来回途中的乐趣，往往比在目的地收获的要多。　　与自己失之交臂的东西，急需时倾尽全力的去找也找不到，最后却发现原来它一直在自己的身边，只是找到时，自己却不再需要它，那时有缘无分。无缘分的我们不必强求，有缘无分的我们也不该挽留，这些东西是无法永远掌握在自己手中的，那么便让它们随风而逝吧。一切顺其自然，免得苦苦追寻找的那一分缘，到手后，却发现跟自己心目中的相差甚远，想放弃，又舍不得，弄得前进的脚步竟全是缘份的负荷。　　人都说：缘分天定。很多的偶然，每次的巧合，不经意的邂逅，让人感觉到冥冥中确实有一股力量存在。“嘿，有见面了。”“这世界真小。”“我们真有缘”“莫非这是缘份？”当上帝看到这一切时，他偷偷的笑了。威力无穷的魔棒指挥着这一切，给人们的脸上带来无穷的惊喜，还有心底的那份感激。　　不要说自己不懂缘分。缘分抓不住的，抓，已经有了一分刻意，只能用心去领会，感悟。缘分来去匆匆，你感到它来时，那是一阵惊喜；如果它走时你才感到，那是一种惆怅和悲伤。有些逝去了便不会再来，你只能遗憾一辈子。记住：缘分是一种自然，不是刻意。　　缘分无需等待。她要来的时候自然会来，因此不必对缘分翘首以待，望穿秋水。只要用心去感觉，那已经是很不错的了。缘分无规律，苦苦的等待着一分缘，很可能会是等不到。苦苦等待，那是刻意，那时即使缘分擦身而过，你也感觉不到。与其如此，不如放弃等待，去多用心去体会，或者，缘份已来到了你的身边呢。　　相信缘份的人多是敏感的，感情细腻而且很有爱心。他们知道，每一分缘都是难得的，求不来的，所以会尽力善待缘分带来的一切，包括
+                            好的和不够理想的。你信缘吧，你会因此拥有许多知</p>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const header = document.querySelector('header');
+        const img = document.querySelector('.img');
+        let scrollDistance = 0;
+        let requestId = null;
+        function updateHeaderClipPath() {
+            const clipPathValue = `polygon(0 0, 100% 0%, 100% ${(scrollDistance <= 600) ? 100 - ((scrollDistance / 600) * 60) : 75}%, 0 100%)`;
+            header.style.clipPath = clipPathValue;
+            const scaleValue = 1 + ((scrollDistance / 600) * 1);
+            img.style.transform = `scale(${scaleValue})`;
+            const opacityValue = (scrollDistance / 600);
+        }
+        function scrollHandler(event) {
+            if (event.deltaY < 0) {
+                scrollDistance = Math.max(0, scrollDistance + event.deltaY);
+            } else {
+                scrollDistance = Math.min(600, scrollDistance + event.deltaY);
+            }
+            if (!requestId) {
+                requestId = window.requestAnimationFrame(() => {
+                    updateHeaderClipPath();
+                    requestId = null;
+                });
+            }
+        }
+        window.addEventListener('wheel', scrollHandler);
+    </script>
+</body>
+
+</html> 
